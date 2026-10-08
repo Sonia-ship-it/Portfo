@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uwase Sonia – Full Stack Engineer &amp; UI/UX Designer based in Kigali</title>
+  <meta name="description" content="Portfolio of Uwase Sonia, a Full Stack Engineer and UI/UX Designer crafting intuitive, high-performance web applications, scalable architecture, and secure digital products.">
+  <meta name="keywords" content="Uwase Sonia, Full Stack Engineer, UI/UX Designer, Frontend Developer, Kigali, Rwanda, React, Next.js, Spring Boot, NestJS">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Uwase Sonia – Full Stack Engineer &amp; UI/UX Designer">
+  <meta property="og:description" content="Curious by nature, I build digital experiences that blend design, development, and smart solutions.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/sonia_portrait.jpg">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20width=%22100%22%20height=%22100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%2312101e%22/><text y=%2265%22 font-size=%2250%22 font-family=%22sans-serif%22 font-weight=%22bold%22 fill=%22%23ffffff%22 text-anchor=%22middle%22 x=%2250%22>S</text></svg>">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       HEADER / NAVBAR
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo" id="brandLogo">
+        <span class="brand-dot"></span>
+        UWASE SONIA
+      </a>
+      
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#work" class="nav-link">Work</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#milestones" class="nav-link">Milestones</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <a href="#contact" class="nav-btn-contact">Contact</a>
+        <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION
+         ========================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <div class="hero-card">
+          <!-- Interactive Top Pill Badge -->
+          <div>
+            <div class="hero-pill-badge" id="heroPillBadge" title="Click to interact!">
+              You look great today. ✨
+            </div>
+          </div>
+
+          <!-- Pulsing Status Pill -->
+          <div class="hero-status-pill">
+            <span class="status-dot"></span>
+            Available for new projects
+          </div>
+
+          <!-- Signature Headline with Inline Pills -->
+          <h1 class="hero-headline">
+            Hi! I'm <span class="inline-pill pill-white">Uwase Sonia</span><br>
+            a <span class="inline-pill pill-dark">Full Stack Engineer</span> from <span class="inline-pill pill-outline">Kigali</span><br>
+            specializing in human-centric digital experiences, scalable systems, and cybersecurity.
+          </h1>
+
+          <!-- Dual CTAs -->
+          <div class="hero-cta-group">
+            <a href="#work" class="btn-primary-pill">My work</a>
+            <a href="#about" class="btn-secondary-pill">About me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FEATURED PROJECTS SECTION
+         ========================================================================== -->
+    <section class="projects-section" id="work">
+      <div class="container">
+        
+        <!-- Project 1: SparkLock (Blue Pastel Theme) -->
+        <article class="project-card card-theme-blue">
+          <div class="project-content">
+            <div class="project-logo-badge">
+              <span class="project-logo-icon">⚡</span>
+              <span class="project-logo-text">SparkLock</span>
+            </div>
+            <p class="project-category">Full Stack + IoT Security</p>
+            <h2 class="project-title">Smart Access Control for the Modern Physical World</h2>
+            <p class="project-description">
+              A smart lock management ecosystem built with NestJS, Spring Boot, and React Native. Empowers property managers with real-time WebSocket telemetry, encrypted audit trails, remote access unlocking, and instantaneous guest permissions.
+            </p>
+            <div class="project-tags">
+              <span class="tech-tag">NestJS</span>
+              <span class="tech-tag">SpringBoot</span>
+              <span class="tech-tag">React Native</span>
+              <span class="tech-tag">WebSocket</span>
+              <span class="tech-tag">PostgreSQL</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn-card-primary" data-project="sparklock">Case study</button>
+              <a href="https://weisheit.vercel.app/#projects" target="_blank" rel="noopener noreferrer" class="btn-card-secondary">Live Demo ↗</a>
+            </div>
+          </div>
+          <div class="project-visual">
+            <div class="project-img-frame">
+              <img src="assets/images/mockup_sparklock.jpg" alt="SparkLock IoT and mobile application interface" loading="lazy">
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: UPS - Edgereach (Green Sage Pastel Theme) -->
+        <article class="project-card card-theme-green">
+          <div class="project-content">
+            <div class="project-logo-badge">
+              <span class="project-logo-icon" style="background:#15803d;">🏢</span>
+              <span class="project-logo-text">UPS - Edgereach</span>
+            </div>
+            <p class="project-category">UI/UX Design + Enterprise ERP</p>
+            <h2 class="project-title">Next-Gen Hotel Operations &amp; Cost Intelligence</h2>
+            <p class="project-description">
+              A fully integrated hotel operations platform handling inventory control, POS analytics, kitchen recipe costing, and revenue management. Streamlines stock movement, minimizes food waste, and arms executives with real-time analytics.
+            </p>
+            <div class="project-tags">
+              <span class="tech-tag">Figma</span>
+              <span class="tech-tag">Adobe XD</span>
+              <span class="tech-tag">UI/UX Design</span>
+              <span class="tech-tag">Design Systems</span>
+              <span class="tech-tag">Analytics</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn-card-primary" data-project="edgereach">Case study</button>
+              <a href="https://weisheit.vercel.app/#projects" target="_blank" rel="noopener noreferrer" class="btn-card-secondary">Figma Preview ↗</a>
+            </div>
+          </div>
+          <div class="project-visual">
+            <div class="project-img-frame">
+              <img src="assets/images/mockup_ups_edgereach.jpg" alt="UPS Edgereach Hotel operations management dashboard" loading="lazy">
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Hilink (Peach Pastel Theme) -->
+        <article class="project-card card-theme-peach">
+          <div class="project-content">
+            <div class="project-logo-badge">
+              <span class="project-logo-icon" style="background:#ea580c;">🏕️</span>
+              <span class="project-logo-text">Hilink</span>
+            </div>
+            <p class="project-category">Frontend Architecture + Next.js</p>
+            <h2 class="project-title">Curating Adventure: Clean Travel Booking at Scale</h2>
+            <p class="project-description">
+              A high-performance travel booking web application built with React, Next.js, TypeScript, and Tailwind CSS. Helps explorers discover remote global destinations, view curated package itineraries, and book journeys effortlessly.
+            </p>
+            <div class="project-tags">
+              <span class="tech-tag">Next.js</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Tailwind CSS</span>
+              <span class="tech-tag">Framer Motion</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn-card-primary" data-project="hilink">Case study</button>
+              <a href="https://weisheit.vercel.app/#projects" target="_blank" rel="noopener noreferrer" class="btn-card-secondary">Explore Platform ↗</a>
+            </div>
+          </div>
+          <div class="project-visual">
+            <!-- Modern Responsive Browser Mockup -->
+            <div class="css-mockup-browser">
+              <div class="mockup-header-bar">
+                <div class="mockup-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="mockup-address-bar">hilink.travel/explore/rwanda-volcanoes</div>
+              </div>
+              <div class="mockup-content-body">
+                <div class="hilink-hero-preview">
+                  <h4>Explore Mountain Trails</h4>
+                  <p>Discover pristine wilderness trails guided by local experts.</p>
+                </div>
+                <div class="hilink-cards-grid">
+                  <div class="hilink-mini-card">
+                    <span>Expedition</span>
+                    <h5>Volcanoes Peak</h5>
+                    <p style="font-size: 0.75rem; color: #64748b;">4 Days • High Altitude</p>
+                  </div>
+                  <div class="hilink-mini-card">
+                    <span>Lakeside</span>
+                    <h5>Lake Kivu Trail</h5>
+                    <p style="font-size: 0.75rem; color: #64748b;">2 Days • Relaxing Hike</p>
+                  </div>
+                  <div class="hilink-mini-card">
+                    <span>Canopy</span>
+                    <h5>Nyungwe Rainforest</h5>
+                    <p style="font-size: 0.75rem; color: #64748b;">3 Days • Biodiversity</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: SaveIt (Lavender Pastel Theme) -->
+        <article class="project-card card-theme-lavender">
+          <div class="project-content">
+            <div class="project-logo-badge">
+              <span class="project-logo-icon" style="background:#7c3aed;">💰</span>
+              <span class="project-logo-text">SaveIt</span>
+            </div>
+            <p class="project-category">Fintech + React Native + Spring Boot</p>
+            <h2 class="project-title">Gamified Financial Wellness for the Next Generation</h2>
+            <p class="project-description">
+              A smart savings and budgeting platform that empowers users to take control of their finances by setting micro-goals, tracking expenses, and fostering healthy saving habits through rewarding progression milestones.
+            </p>
+            <div class="project-tags">
+              <span class="tech-tag">React Native</span>
+              <span class="tech-tag">SpringBoot</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Framer Motion</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn-card-primary" data-project="saveit">Case study</button>
+              <a href="https://weisheit.vercel.app/#projects" target="_blank" rel="noopener noreferrer" class="btn-card-secondary">View Mobile App ↗</a>
+            </div>
+          </div>
+          <div class="project-visual">
+            <!-- Modern Phone Mockup -->
+            <div class="saveit-mockup-phone">
+              <div class="phone-screen">
+                <div class="phone-header-notch"></div>
+                <div class="phone-balance-card">
+                  <div class="phone-balance-label">Total Saved This Month</div>
+                  <div class="phone-balance-value">$3,420.50</div>
+                  <div class="phone-savings-progress">
+                    <span>Target: $4,000</span>
+                    <span>85.5% achieved</span>
+                  </div>
+                </div>
+                <div class="phone-activity-row">
+                  <span>Emergency Fund</span>
+                  <strong style="color: #4ade80;">+$250.00</strong>
+                </div>
+                <div class="phone-activity-row">
+                  <span>Tech Gear Goal</span>
+                  <strong style="color: #4ade80;">+$120.00</strong>
+                </div>
+                <div class="phone-activity-row">
+                  <span>Investments</span>
+                  <strong style="color: #4ade80;">+$500.00</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         TOOLS MARQUEE ("My favorite tools 🛠️")
+         ========================================================================== -->
+    <section class="tools-section">
+      <div class="container">
+        <div class="section-pill-tag">
+          My favorite tools 🛠️
+        </div>
+        <h2 class="section-title-large">
+          Tools that power my human-centered solutions.
+        </h2>
+      </div>
+
+      <div class="tools-marquee-container">
+        <div class="tools-track">
+          <!-- Tool Chips (repeated twice for seamless loop) -->
+          <div class="tool-chip"><span style="color:#61dafb;">⚛</span> React &amp; Next.js</div>
+          <div class="tool-chip"><span style="color:#3178c6;">TS</span> TypeScript</div>
+          <div class="tool-chip"><span style="color:#f24e1e;">❖</span> Figma</div>
+          <div class="tool-chip"><span style="color:#38bdf8;">💨</span> Tailwind CSS</div>
+          <div class="tool-chip"><span style="color:#e0234e;">🦁</span> NestJS</div>
+          <div class="tool-chip"><span style="color:#6db33f;">🍃</span> Spring Boot</div>
+          <div class="tool-chip"><span style="color:#61dafb;">📱</span> React Native</div>
+          <div class="tool-chip"><span style="color:#336791;">🐘</span> PostgreSQL</div>
+          <div class="tool-chip"><span style="color:#47a248;">🍃</span> MongoDB</div>
+          <div class="tool-chip"><span style="color:#ff269e;">XD</span> Adobe XD</div>
+          <div class="tool-chip"><span style="color:#2496ed;">🐳</span> Docker</div>
+          <div class="tool-chip"><span style="color:#f05032;">🔀</span> Git &amp; GitHub</div>
+
+          <!-- Duplicate Set for Marquee -->
+          <div class="tool-chip"><span style="color:#61dafb;">⚛</span> React &amp; Next.js</div>
+          <div class="tool-chip"><span style="color:#3178c6;">TS</span> TypeScript</div>
+          <div class="tool-chip"><span style="color:#f24e1e;">❖</span> Figma</div>
+          <div class="tool-chip"><span style="color:#38bdf8;">💨</span> Tailwind CSS</div>
+          <div class="tool-chip"><span style="color:#e0234e;">🦁</span> NestJS</div>
+          <div class="tool-chip"><span style="color:#6db33f;">🍃</span> Spring Boot</div>
+          <div class="tool-chip"><span style="color:#61dafb;">📱</span> React Native</div>
+          <div class="tool-chip"><span style="color:#336791;">🐘</span> PostgreSQL</div>
+          <div class="tool-chip"><span style="color:#47a248;">🍃</span> MongoDB</div>
+          <div class="tool-chip"><span style="color:#ff269e;">XD</span> Adobe XD</div>
+          <div class="tool-chip"><span style="color:#2496ed;">🐳</span> Docker</div>
+          <div class="tool-chip"><span style="color:#f05032;">🔀</span> Git &amp; GitHub</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         WAYS OF WORKING / SKILLS ("Ways of working 💡")
+         ========================================================================== -->
+    <section class="skills-section" id="skills">
+      <div class="container">
+        <div class="section-pill-tag">
+          Ways of working 💡
+        </div>
+        <h2 class="section-title-large">
+          Skills that I use to create world-class solutions
+        </h2>
+
+        <div class="skills-grid">
+          <!-- Skill 1 -->
+          <div class="skill-card">
+            <div class="skill-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+            <div class="skill-info">
+              <h3>Full-Stack Engineering</h3>
+              <p>Architecting end-to-end applications with modern frontend frameworks and reliable, decoupled cloud backends.</p>
+            </div>
+          </div>
+
+          <!-- Skill 2 -->
+          <div class="skill-card">
+            <div class="skill-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+            </div>
+            <div class="skill-info">
+              <h3>UI/UX &amp; Design Systems</h3>
+              <p>Translating user empathy and business logic into modular, pixel-perfect design tokens, interfaces, and Figma components.</p>
+            </div>
+          </div>
+
+          <!-- Skill 3 -->
+          <div class="skill-card">
+            <div class="skill-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <div class="skill-info">
+              <h3>Cybersecurity &amp; Resilience</h3>
+              <p>Integrating security-first patterns, zero-trust authentication, robust data encryption, and resilient system boundaries.</p>
+            </div>
+          </div>
+
+          <!-- Skill 4 -->
+          <div class="skill-card">
+            <div class="skill-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+            </div>
+            <div class="skill-info">
+              <h3>Rapid Prototyping</h3>
+              <p>Creating functional, testable prototypes to quickly gather user insights and accelerate production cycles.</p>
+            </div>
+          </div>
+
+          <!-- Skill 5 -->
+          <div class="skill-card">
+            <div class="skill-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+            </div>
+            <div class="skill-info">
+              <h3>API &amp; Real-time Systems</h3>
+              <p>Developing high-throughput REST and WebSocket APIs with Spring Boot and NestJS for instant bidirectional communication.</p>
+            </div>
+          </div>
+
+          <!-- Skill 6 -->
+          <div class="skill-card">
+            <div class="skill-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <div class="skill-info">
+              <h3>Empathetic Leadership</h3>
+              <p>Leading through mentorship and mutual trust, fostering question-friendly teams that solve complex problems together.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SERVICES SECTION ("Core offerings")
+         ========================================================================== -->
+    <section class="services-section" id="services">
+      <div class="container">
+        <div class="section-pill-tag">
+          Ways to collaborate 🤝
+        </div>
+        <h2 class="section-title-large">
+          Here are my core expertises — let's build something extraordinary
+        </h2>
+
+        <div class="services-grid">
+          <!-- Service 1 -->
+          <div class="service-card">
+            <div class="service-header">
+              <div class="service-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 9.17 4.24-4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="m9.17 14.83-4.24 4.24"></path></svg>
+              </div>
+              <div>
+                <h3 class="service-title">UI/UX Design</h3>
+                <p class="service-subtitle">Turn your vision into an intuitive masterpiece</p>
+              </div>
+            </div>
+            <ul class="service-features-list">
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Figma Design Systems &amp; Tokens
+              </li>
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                User Research &amp; Customer Journeys
+              </li>
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Interactive High-Fidelity Prototypes
+              </li>
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Accessibility (WCAG) Compliance
+              </li>
+            </ul>
+            <a href="#contact" class="btn-service-cta">Contact me</a>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="service-card">
+            <div class="service-header">
+              <div class="service-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </div>
+              <div>
+                <h3 class="service-title">Frontend Engineering</h3>
+                <p class="service-subtitle">Production-grade, blazing-fast web apps</p>
+              </div>
+            </div>
+            <ul class="service-features-list">
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                React, Next.js &amp; TypeScript Architecture
+              </li>
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Smooth CSS &amp; Framer Motion Micro-interactions
+              </li>
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Responsive, Pixel-Perfect Layouts
+              </li>
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                SEO &amp; Core Web Vitals Optimization
+              </li>
+            </ul>
+            <a href="#contact" class="btn-service-cta">Contact me</a>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="service-card">
+            <div class="service-header">
+              <div class="service-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              </div>
+              <div>
+                <h3 class="service-title">Full-Stack Solutions</h3>
+                <p class="service-subtitle">Robust backend, secure APIs &amp; mobile</p>
+              </div>
+            </div>
+            <ul class="service-features-list">
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                NestJS, Node.js &amp; Spring Boot Backend
+              </li>
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Cross-Platform Mobile with React Native
+              </li>
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                PostgreSQL &amp; MongoDB Database Architecture
+              </li>
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Real-Time WebSockets &amp; Security Audits
+              </li>
+            </ul>
+            <a href="#contact" class="btn-service-cta">Contact me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CAREER MILESTONES & TROPHIES SECTION
+         ========================================================================== -->
+    <section class="milestones-section" id="milestones">
+      <div class="container">
+        <div class="section-pill-tag">
+          Journey &amp; Recognition 🏆
+        </div>
+        <h2 class="section-title-large">
+          Career milestones and honors that reflect technical excellence
+        </h2>
+
+        <div class="milestones-grid">
+          <!-- Experience Column -->
+          <div class="milestones-card-group">
+            <h3 class="section-group-title">
+              <span>💼</span> Professional Experience
+            </h3>
+
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-period">2026 — Present</span>
+                <span class="timeline-company">Client Engagements</span>
+              </div>
+              <h4 class="timeline-role">Freelance UI/UX Designer &amp; Consultant</h4>
+              <p class="timeline-desc">
+                Designing immersive digital experiences for luxury hospitality and corporate platforms (including INN-SYNC and UPS - Edgereach). Crafting end-to-end design systems and high-fidelity interactive prototypes.
+              </p>
+            </div>
+
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-period">2025 — Present</span>
+                <span class="timeline-company">Blink Tech Startup (Co)</span>
+              </div>
+              <h4 class="timeline-role">FrontEnd Developer</h4>
+              <p class="timeline-desc">
+                Spearheading frontend architecture for a high-performance startup platform. Collaborating with product leadership on technical roadmaps, component libraries, and performance tuning for international scale.
+              </p>
+            </div>
+
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-period">2024 — 2025</span>
+                <span class="timeline-company">Ngwino Project</span>
+              </div>
+              <h4 class="timeline-role">Front End Developer &amp; Researcher</h4>
+              <p class="timeline-desc">
+                Conducted deep user research to inform human-centric frontend features. Engineered modular React components with Tailwind CSS and iterated based on direct user behavioral metrics.
+              </p>
+            </div>
+          </div>
+
+          <!-- Trophies Column -->
+          <div class="trophies-card-group">
+            <h3 class="section-group-title">
+              <span>🏅</span> Honors &amp; Awards
+            </h3>
+
+            <div class="trophy-item">
+              <div class="trophy-badge">🥇</div>
+              <div class="trophy-info">
+                <h4>First Lego League ('24)</h4>
+                <div class="award-title">First Place Winner</div>
+                <p>Awarded first place for excellence in robotics design, technical innovation, and core team leadership among regional teams.</p>
+              </div>
+            </div>
+
+            <div class="trophy-item">
+              <div class="trophy-badge">🏆</div>
+              <div class="trophy-info">
+                <h4>Coderina Girl Summer Camp ('24)</h4>
+                <div class="award-title">Camp Champion (1st Place)</div>
+                <p>Recognized for outstanding software implementation, technical rigor, and measurable community impact.</p>
+              </div>
+            </div>
+
+            <div class="trophy-item">
+              <div class="trophy-badge">💡</div>
+              <div class="trophy-info">
+                <h4>Wavumbuzi Entrepreneurship ('23)</h4>
+                <div class="award-title">Weekly Challenge Winner</div>
+                <p>Ranked top performer in creative problem-solving and rapid entrepreneurial product prototyping.</p>
+              </div>
+            </div>
+
+            <div class="trophy-item">
+              <div class="trophy-badge">🚀</div>
+              <div class="trophy-info">
+                <h4>Innovate Hub ('25)</h4>
+                <div class="award-title">Ideation &amp; Prototyping Workshop</div>
+                <p>Selected for advanced product design methods and rapid hardware-software prototyping labs.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         TESTIMONIALS SECTION ("Trusted by Visionaries")
+         ========================================================================== -->
+    <section class="testimonials-section">
+      <div class="container">
+        <div class="section-pill-tag">
+          Trusted by visionaries 🌟
+        </div>
+        <h2 class="section-title-large">
+          Collaborating with forward-thinking leaders to build memorable experiences
+        </h2>
+
+        <div class="testimonials-grid">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-verified">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Authenticated Colleague
+              </div>
+              <p class="testimonial-quote">
+                "Sonia is the best frontend developer I have ever worked with. Her attention to detail, speed of execution, and design intuition set an extraordinary bar."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar" style="background:#4338ca;">K</div>
+              <div>
+                <div class="author-name">Kaliza Esther</div>
+                <div class="author-role">Frontend Developer</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-verified">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Authenticated Teammate
+              </div>
+              <p class="testimonial-quote">
+                "Sonia demonstrates leadership through support rather than authority. By mentoring others, encouraging questions, and guiding teammates through challenges, she helps build confident and capable developers."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar" style="background:#047857;">B</div>
+              <div>
+                <div class="author-name">Byiringiro Aloys</div>
+                <div class="author-role">Software Engineer &amp; Colleague</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-verified">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Authenticated Collaborator
+              </div>
+              <p class="testimonial-quote">
+                "Sonia is a dependable and hardworking developer who consistently delivers high-grade work and maintains an inspiring, positive attitude across tight project timelines."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar" style="background:#b45309;">I</div>
+              <div>
+                <div class="author-name">Irasubiza Mucyo Bertrand</div>
+                <div class="author-role">Collaborator &amp; Engineer</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ABOUT ME SECTION ("Hello, I'm Sonia! 👋")
+         ========================================================================== -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="about-card">
+          <div>
+            <h2 class="about-headline">
+              Hello, I'm Sonia! 👋
+            </h2>
+            <p class="about-text-lead">
+              Full Stack Engineer &amp; UI/UX Designer living in Kigali, Rwanda.
+            </p>
+            <div class="about-paragraphs">
+              <p>
+                I'm passionate about building technology that feels simple on the surface but powerful underneath. With interests spanning full-stack development, UI/UX design, and cybersecurity, I craft digital products that are intuitive, scalable, and secure.
+              </p>
+              <p>
+                I believe great technology is not just built — it's carefully crafted to connect human creativity with the precision of machines. When I'm not coding or designing interfaces, I'm mentoring teammates, exploring robotics, or investigating modern distributed systems.
+              </p>
+            </div>
+
+            <!-- Stats -->
+            <div class="about-stats-row">
+              <div class="stat-item">
+                <h4>02+</h4>
+                <p>Years Mastery</p>
+              </div>
+              <div class="stat-item">
+                <h4>10+</h4>
+                <p>Projects Shipped</p>
+              </div>
+              <div class="stat-item">
+                <h4>∞</h4>
+                <p>Curiosity Level</p>
+              </div>
+            </div>
+
+            <div class="about-buttons">
+              <a href="https://weisheit.vercel.app/CV.pdf" target="_blank" rel="noopener noreferrer" class="btn-primary-pill">
+                Download Résumé (PDF) ↗
+              </a>
+              <a href="#contact" class="btn-secondary-pill">
+                Send me a message
+              </a>
+            </div>
+          </div>
+
+          <div class="about-image-wrapper">
+            <img src="assets/images/sonia_portrait.jpg" alt="Uwase Sonia, Software Engineer" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CONTACT SECTION ("Good software starts with a good conversation.")
+         ========================================================================== -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div class="contact-header">
+            <div class="contact-subtitle">SEND ME A MESSAGE</div>
+            <h2 class="contact-title">
+              Good software starts with a good conversation. Let's talk.
+            </h2>
+            <p class="contact-desc">
+              Have a project in mind, an exciting role, or just want to say hi? Feel free to reach out. I'm always open to discussing new ideas, creative systems, or opportunities to be part of your vision.
+            </p>
+          </div>
+
+          <div class="contact-layout">
+            <!-- Left: Direct Channels & WhatsApp -->
+            <div class="contact-info-panel">
+              <!-- WhatsApp Pill Card (Explicitly requested by user) -->
+              <a href="https://wa.me/250795300840" target="_blank" rel="noopener noreferrer" class="channel-pill-card">
+                <div class="channel-left">
+                  <div class="channel-icon" style="background:#dcfce7; color:#15803d;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                  </div>
+                  <div>
+                    <div class="channel-label">Direct WhatsApp Chat</div>
+                    <div class="channel-value">+250 795 300 840</div>
+                  </div>
+                </div>
+                <span class="channel-arrow">↗</span>
+              </a>
+
+              <!-- Email Card -->
+              <a href="mailto:uwasesonia43@gmail.com" class="channel-pill-card">
+                <div class="channel-left">
+                  <div class="channel-icon" style="background:#e0e7ff; color:#4338ca;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  </div>
+                  <div>
+                    <div class="channel-label">Email Sonia</div>
+                    <div class="channel-value">uwasesonia43@gmail.com</div>
+                  </div>
+                </div>
+                <span class="channel-arrow">↗</span>
+              </a>
+
+              <!-- Location / Availability Card -->
+              <div class="channel-pill-card">
+                <div class="channel-left">
+                  <div class="channel-icon" style="background:#fef3c7; color:#b45309;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  </div>
+                  <div>
+                    <div class="channel-label">Current Location</div>
+                    <div class="channel-value">Kigali, Rwanda • Remote Worldwide</div>
+                  </div>
+                </div>
+                <span style="font-size: 0.82rem; font-weight: 700; color: #10b981; background: #ecfdf5; padding: 4px 12px; border-radius: 9999px;">Active</span>
+              </div>
+            </div>
+
+            <!-- Right: Interactive Form -->
+            <form class="contact-form" id="contactForm">
+              <div class="form-group">
+                <label for="userName" class="form-label">Full Name</label>
+                <input type="text" id="userName" class="form-input" placeholder="e.g. Jane Doe" required>
+              </div>
+
+              <div class="form-group">
+                <label for="userEmail" class="form-label">Email Address</label>
+                <input type="email" id="userEmail" class="form-input" placeholder="jane@example.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="userMessage" class="form-label">Message</label>
+                <textarea id="userMessage" class="form-textarea" placeholder="Tell me about your project, timeline, or idea..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-form-submit">Send Message</button>
+              
+              <div class="form-feedback-toast" id="formToast"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>UWASE SONIA</h3>
+          <p>
+            Full Stack Engineer &amp; UI/UX Designer crafting intuitive interfaces backed by robust, high-performance systems.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-nav-list">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About me</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Connect &amp; Social</div>
+          <ul class="footer-nav-list">
+            <li><a href="https://wa.me/250795300840" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a></li>
+            <li><a href="mailto:uwasesonia43@gmail.com">Email ↗</a></li>
+            <li><a href="https://weisheit.vercel.app/" target="_blank" rel="noopener noreferrer">Original Portfolio ↗</a></li>
+            <li><a href="https://weisheit.vercel.app/CV.pdf" target="_blank" rel="noopener noreferrer">Download Résumé (PDF) ↗</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Uwase Sonia. All rights reserved.</div>
+        <div style="display: flex; gap: 24px;">
+          <span>Designed with empathy &amp; precision</span>
+          <span>Kigali, Rwanda</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       CASE STUDY MODAL DIALOG
+       ========================================================================== -->
+  <div class="modal-overlay" id="caseStudyModal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+      
+      <div class="modal-badge" id="modalBadge">Full Stack + IoT Security</div>
+      <h2 class="modal-title" id="modalTitle">Project Title</h2>
+      
+      <div class="modal-image-preview" id="modalImagePreview">
+        <img src="" id="modalImg" alt="Project preview screenshot">
+      </div>
+
+      <div class="modal-specs-grid">
+        <div>
+          <div class="spec-title">Role</div>
+          <div class="spec-value" id="modalRole">Full Stack Architect</div>
+        </div>
+        <div>
+          <div class="spec-title">Timeline</div>
+          <div class="spec-value" id="modalYear">2025</div>
+        </div>
+        <div>
+          <div class="spec-title">Technologies</div>
+          <div class="spec-value" id="modalStack">NestJS, React Native</div>
+        </div>
+      </div>
+
+      <div class="modal-content-text">
+        <h4 style="margin-bottom: 8px; color: var(--text-primary);">Overview</h4>
+        <p id="modalOverview" style="margin-bottom: 16px;"></p>
+
+        <h4 style="margin-bottom: 8px; color: var(--text-primary);">The Challenge</h4>
+        <p id="modalProblem" style="margin-bottom: 16px;"></p>
+
+        <h4 style="margin-bottom: 8px; color: var(--text-primary);">The Solution &amp; Engineering</h4>
+        <p id="modalSolution"></p>
+      </div>
+
+      <div class="modal-actions">
+        <a href="#" id="modalDemoBtn" target="_blank" rel="noopener noreferrer" class="btn-primary-pill">
+          Explore Live Project ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
