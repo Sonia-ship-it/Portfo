@@ -1,10 +1,7 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
 import { 
-  ArrowLeft, 
-  ArrowRight, 
   ArrowUpRight, 
   Zap, 
   Building2, 
@@ -13,7 +10,8 @@ import {
   Music,
   Radio,
   Play,
-  Volume2
+  Volume2,
+  ExternalLink
 } from 'lucide-react';
 
 export const PROJECTS_DATA = [
@@ -22,11 +20,12 @@ export const PROJECTS_DATA = [
     indexNum: '01',
     totalNum: '04',
     name: 'Mutekano',
-    icon: <ShieldCheck size={16} strokeWidth={2.4} color="#ffffff" />,
+    statusLabel: 'Production • Live Radar',
+    icon: <ShieldCheck size={14} strokeWidth={2.4} color="#ffffff" />,
     iconBg: '#483831',
     category: 'Civic Safety & Cloud Security',
     title: 'Intelligent Public Safety & Emergency Infrastructure',
-    description: 'A mission-critical civic security platform engineered to safeguard citizens through real-time geo-fenced emergency dispatch, incident reporting, encrypted SOS broadcasts, and live situational awareness across Rwanda.',
+    description: 'A mission-critical civic security platform engineered to safeguard citizens through real-time geo-fenced emergency dispatch, encrypted SOS broadcasts, and live situational awareness across Rwanda.',
     tags: ['Next.js', 'PostgreSQL', 'WebSockets', 'Geo-Fencing', 'Cryptography'],
     themeClass: 'card-theme-blue',
     visualType: 'mutekanoMockup',
@@ -43,11 +42,12 @@ export const PROJECTS_DATA = [
     indexNum: '02',
     totalNum: '04',
     name: 'Cantora',
-    icon: <Music size={16} strokeWidth={2.4} color="#ffffff" />,
+    statusLabel: 'Audio Architecture • Web Audio',
+    icon: <Music size={14} strokeWidth={2.4} color="#ffffff" />,
     iconBg: '#483831',
     category: 'Audio Architecture & Sound Design',
     title: 'Next-Gen Acoustic Exploration & Audio Engine',
-    description: 'An immersive digital music streaming and sound architecture platform inspired by high-fidelity cinematic sound design. Delivers low-latency Web Audio waveforms, multi-track stems, and frictionless artist collaboration.',
+    description: 'An immersive digital music streaming and sound architecture platform delivering lossless browser waveforms, low-latency audio processing, and frictionless artist collaboration.',
     tags: ['React', 'Web Audio API', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
     themeClass: 'card-theme-lavender',
     visualType: 'cantoraMockup',
@@ -64,11 +64,12 @@ export const PROJECTS_DATA = [
     indexNum: '03',
     totalNum: '04',
     name: 'SparkLock',
-    icon: <Zap size={16} strokeWidth={2.4} color="#ffffff" />,
+    statusLabel: 'IoT Telemetry • 2nd Place Hackathon',
+    icon: <Zap size={14} strokeWidth={2.4} color="#ffffff" />,
     iconBg: '#483831',
     category: 'IoT • Embedded Hardware • Hackathon 2nd Place',
     title: 'Smart Hazard Prevention for Electrical & Gas Leaks',
-    description: 'A comprehensive hardware-software hazard detection system awarded 2nd place in hackathon competition. Combines relay modules, temperature sensors, gas sniffers, and a companion mobile app to prevent fires before they spark.',
+    description: 'A comprehensive hardware-software hazard detection system awarded 2nd place in hackathon competition. Combines relay actuators, temperature sensors, gas sniffers, and mobile telemetry to stop fires.',
     tags: ['C++ Embedded', 'Relay Modules', 'React Native', 'Sensors', 'Buzzer Alerts'],
     themeClass: 'card-theme-peach',
     visualType: 'image',
@@ -87,11 +88,12 @@ export const PROJECTS_DATA = [
     indexNum: '04',
     totalNum: '04',
     name: 'UPS - Edgereach',
-    icon: <Building2 size={16} strokeWidth={2.4} color="#ffffff" />,
+    statusLabel: 'Enterprise ERP • Hospitality Suite',
+    icon: <Building2 size={14} strokeWidth={2.4} color="#ffffff" />,
     iconBg: '#483831',
     category: 'UI/UX Design + Enterprise ERP',
     title: 'Hospitality Operations & Inventory Intelligence in Rwanda',
-    description: 'A fully integrated hotel operations platform designed for hospitality venues in Rwanda, unifying inventory control, point of sale (POS) analytics, recipe costing, and revenue management with human-centered elegance.',
+    description: 'A fully integrated hotel operations platform designed for hospitality venues in Rwanda, unifying inventory control, point of sale (POS) analytics, recipe costing, and revenue management.',
     tags: ['Figma', 'Adobe XD', 'UI/UX Design', 'Design Systems', 'Analytics'],
     themeClass: 'card-theme-green',
     visualType: 'image',
@@ -108,28 +110,22 @@ export const PROJECTS_DATA = [
 ];
 
 export default function ProjectsStack({ onSelectCaseStudy }) {
-  const containerRef = useRef(null);
   const [activeCardIndex, setActiveCardIndex] = useState(0);
 
-  // Scroll tracking: on going down through this section, it changes the active card in the bundle
+  // Monitor scroll position to highlight the active card in the chips bar
   useEffect(() => {
     const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const totalScrollDistance = rect.height - windowHeight;
-      
-      if (totalScrollDistance <= 0) return;
-      
-      // Calculate scroll progress within this pinned section
-      const scrolled = -rect.top;
-      const progress = Math.max(0, Math.min(1, scrolled / totalScrollDistance));
-      
-      // Map smoothly into card index 0, 1, 2, 3
-      const numCards = PROJECTS_DATA.length;
-      const newIndex = Math.min(numCards - 1, Math.floor(progress * numCards));
-      
-      setActiveCardIndex(newIndex);
+      PROJECTS_DATA.forEach((_, idx) => {
+        const el = document.getElementById(`feature-card-${idx}`);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          const targetTop = 76 + idx * 22;
+          // Active when pinned near its top dock zone
+          if (rect.top <= targetTop + 30 && rect.bottom >= targetTop + 80) {
+            setActiveCardIndex(idx);
+          }
+        }
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -137,305 +133,208 @@ export default function ProjectsStack({ onSelectCaseStudy }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const goToCard = (idx) => {
+  const scrollToCard = (idx) => {
     setActiveCardIndex(idx);
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    const totalScrollDistance = rect.height - windowHeight;
-    const targetScroll = (idx / PROJECTS_DATA.length) * totalScrollDistance;
-    const targetY = window.scrollY + rect.top + targetScroll + 10;
-    window.scrollTo({ top: targetY, behavior: 'smooth' });
-  };
-
-  const nextCard = () => {
-    goToCard((activeCardIndex + 1) % PROJECTS_DATA.length);
-  };
-
-  const prevCard = () => {
-    goToCard((activeCardIndex - 1 + PROJECTS_DATA.length) % PROJECTS_DATA.length);
+    const container = document.querySelector('.features-stack-container');
+    if (container) {
+      const containerTop = container.getBoundingClientRect().top + window.scrollY;
+      const cardStep = 445 + window.innerHeight * 0.65;
+      const targetY = containerTop + idx * cardStep - (76 + idx * 22);
+      const scroller = document.scrollingElement || document.documentElement;
+      scroller.scrollTo({
+        top: Math.max(0, targetY),
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
-    <section className="projects-bundle-section" id="work" ref={containerRef}>
-      
-      {/* Sticky Stage: Stays pinned in viewport while scrolling down to change cards */}
-      <div className="bundle-sticky-stage">
-        <div className="container">
-          
-          {/* Header Row: Label + Title + Bundle Chips Navigation */}
-          <div className="bundle-header-row">
-            <div className="bundle-label-group">
-              <div className="section-pill-tag">
-                <Layers size={13} style={{ marginRight: '6px' }} />
-                <span>Project Bundle • Card {activeCardIndex + 1} of {PROJECTS_DATA.length}</span>
-              </div>
-              <h2 className="section-title-large" style={{ margin: 0 }}>
-                Featured Projects &amp; Systems Architecture
-              </h2>
+    <section className="projects-features-section" id="work">
+      <div className="container">
+        
+        {/* Section Header */}
+        <div className="features-header-row">
+          <div className="features-label-group">
+            <div className="section-pill-tag">
+              <Layers size={13} style={{ marginRight: '6px' }} />
+              <span>Featured Works • 04 Architecture Cases</span>
             </div>
+            <h2 className="section-title-large" style={{ margin: 0 }}>
+              Featured Projects &amp; Systems Architecture
+            </h2>
+          </div>
 
-            {/* Bundle Chips: Click to deal any card or see active deal */}
-            <div className="bundle-chips-bar">
-              <div className="bundle-chips-group">
-                {PROJECTS_DATA.map((proj, idx) => (
-                  <button
-                    key={proj.id}
-                    className={`bundle-chip ${activeCardIndex === idx ? 'active' : ''}`}
-                    onClick={() => goToCard(idx)}
-                    title={`View ${proj.name}`}
-                  >
-                    <span className="chip-num">{proj.indexNum}</span>
-                    <span className="chip-name">{proj.name}</span>
-                  </button>
-                ))}
-              </div>
-
-              {/* Prev / Next deal arrow buttons */}
-              <div className="bundle-nav-arrows">
-                <button 
-                  className="bundle-arrow-btn" 
-                  onClick={prevCard} 
-                  aria-label="Previous card in bundle"
-                  title="Previous card"
+          {/* Quick Jump Chips */}
+          <div className="features-chips-bar">
+            <div className="features-chips-group">
+              {PROJECTS_DATA.map((proj, idx) => (
+                <button
+                  key={proj.id}
+                  className={`features-chip ${activeCardIndex === idx ? 'active' : ''}`}
+                  onClick={() => scrollToCard(idx)}
+                  title={`Jump to ${proj.name}`}
                 >
-                  <ArrowLeft size={16} />
+                  <span className="chip-num">{proj.indexNum}</span>
+                  <span className="chip-name">{proj.name}</span>
                 </button>
-                <button 
-                  className="bundle-arrow-btn" 
-                  onClick={nextCard} 
-                  aria-label="Next card in bundle"
-                  title="Next card"
-                >
-                  <ArrowRight size={16} />
-                </button>
-              </div>
+              ))}
             </div>
           </div>
+        </div>
 
-          {/* Physical Bundle Container: All cards stacked together in the bundle */}
-          <div className="bundle-deck-container">
-            {PROJECTS_DATA.map((project, idx) => {
-              const isCurrent = idx === activeCardIndex;
-              const diff = idx - activeCardIndex;
+        {/* Sticky Card Stacking Deck */}
+        <div className="features-stack-container">
+          {PROJECTS_DATA.map((project, idx) => (
+            <div 
+              key={project.id}
+              id={`feature-card-${idx}`}
+              className="feature-card-wrapper"
+              style={{
+                top: `calc(76px + ${idx * 22}px)`,
+                zIndex: idx + 1,
+                marginBottom: idx === PROJECTS_DATA.length - 1 ? '55vh' : '65vh',
+              }}
+            >
+              <article className={`feature-card-surface ${project.themeClass}`}>
+                
+                {/* Left Column: Clean Michelle Irby Project Details */}
+                <div className="project-content">
+                  <div className="project-logo-badge">
+                    <span className="project-logo-icon">{project.icon}</span>
+                    <span className="project-logo-text">{project.name}</span>
+                    <span className="project-index-pill">{project.indexNum} / 04</span>
+                  </div>
 
-              // Transform calculations so all cards remain visible in the physical bundle:
-              // - Current card: front and center (y: 0, scale: 1, full opacity, top z-index)
-              // - Past cards: neatly stacked above with visible header tabs peeking (y: -16px, scale: 0.98, opacity: 0.88)
-              // - Upcoming cards: stacked underneath peeking from below (y: +18px, scale: 0.97, opacity: 0.85)
-              let yOffset = 0;
-              let scaleValue = 1;
-              let opacityValue = 1;
-              let zIndexValue = 10;
+                  <p className="project-category">{project.category}</p>
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-description">{project.description}</p>
+                  
+                  <div className="project-tags">
+                    {project.tags.map(tag => (
+                      <span key={tag} className="tech-tag">{tag}</span>
+                    ))}
+                  </div>
 
-              if (diff === 0) {
-                yOffset = 0;
-                scaleValue = 1;
-                opacityValue = 1;
-                zIndexValue = 10;
-              } else if (diff < 0) {
-                // Past cards stacked slightly above
-                yOffset = diff * 15;
-                scaleValue = 1 - Math.abs(diff) * 0.025;
-                opacityValue = Math.max(0.65, 0.9 - Math.abs(diff) * 0.1);
-                zIndexValue = 10 + diff; // Below current card
-              } else {
-                // Upcoming cards stacked slightly below
-                yOffset = diff * 18;
-                scaleValue = 1 - diff * 0.035;
-                opacityValue = Math.max(0.65, 0.88 - diff * 0.1);
-                zIndexValue = 10 - diff; // Below current card
-              }
+                  <div className="project-actions">
+                    <button 
+                      className="btn-card-primary" 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onSelectCaseStudy(project);
+                      }}
+                    >
+                      Case study
+                    </button>
+                    <a 
+                      href={project.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="btn-card-secondary"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <span>Live Demo</span>
+                      <ArrowUpRight size={15} style={{ marginLeft: '4px' }} />
+                    </a>
+                  </div>
+                </div>
 
-              return (
-                <motion.div
-                  key={project.id}
-                  className="bundle-card-layer"
-                  initial={false}
-                  animate={{
-                    y: yOffset,
-                    scale: scaleValue,
-                    opacity: opacityValue,
-                    zIndex: zIndexValue,
-                    pointerEvents: isCurrent ? 'auto' : 'none',
-                  }}
-                  transition={{ 
-                    duration: 0.45, 
-                    ease: [0.16, 1, 0.3, 1] 
-                  }}
-                  onClick={() => !isCurrent && goToCard(idx)}
-                >
-                  <ProjectCardContent 
-                    project={project} 
-                    onSelectCaseStudy={onSelectCaseStudy} 
-                  />
-                </motion.div>
-              );
-            })}
-          </div>
+                {/* Right Column: Clean Visual Showcase */}
+                <div className="project-visual">
+                  {project.visualType === 'image' && (
+                    <div className="project-img-frame">
+                      <img 
+                        src={project.imageSrc} 
+                        alt={project.imageAlt} 
+                        loading="eager" 
+                      />
+                    </div>
+                  )}
 
-          {/* Micro Scroll Hint */}
-          <div className="bundle-scroll-guide">
-            <span>Scroll down to deal cards from bundle • Card {activeCardIndex + 1} of {PROJECTS_DATA.length} active</span>
-          </div>
+                  {/* Mutekano Civic Safety Command Preview */}
+                  {project.visualType === 'mutekanoMockup' && (
+                    <div className="project-img-frame">
+                      <div style={{ background: '#ffffff', color: '#121316', padding: '24px 26px', height: '100%', minHeight: '270px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '14px', borderBottom: '1px solid #f1f5f9' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <Radio size={16} color="#16a34a" />
+                            <span style={{ fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.04em', color: '#16a34a' }}>
+                              KIGALI SECTOR RADAR • ACTIVE
+                            </span>
+                          </div>
+                          <span style={{ fontSize: '0.74rem', fontWeight: 600, color: '#64748b', background: '#f1f5f9', padding: '3px 9px', borderRadius: '6px' }}>
+                            256-bit AES
+                          </span>
+                        </div>
+                        
+                        <div style={{ background: '#f8fafc', borderRadius: '14px', padding: '14px 16px', border: '1px solid #e2e8f0', margin: '14px 0' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.8rem', color: '#475569', fontWeight: 500 }}>
+                            <span>District Coverage</span>
+                            <span style={{ color: '#16a34a', fontWeight: 700 }}>99.8% Nominal</span>
+                          </div>
+                          <div style={{ width: '100%', height: '6px', background: '#e2e8f0', borderRadius: '3px', overflow: 'hidden' }}>
+                            <div style={{ width: '92%', height: '100%', background: '#16a34a', borderRadius: '3px' }}></div>
+                          </div>
+                        </div>
 
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                          <div style={{ background: '#f8fafc', borderRadius: '12px', padding: '12px 14px', border: '1px solid #e2e8f0' }}>
+                            <div style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Rapid SOS Response</div>
+                            <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', marginTop: '3px' }}>2.4 min</div>
+                          </div>
+                          <div style={{ background: '#f8fafc', borderRadius: '12px', padding: '12px 14px', border: '1px solid #e2e8f0' }}>
+                            <div style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Verified Units</div>
+                            <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', marginTop: '3px' }}>148 Active</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Cantora Lossless Sound Engine Preview */}
+                  {project.visualType === 'cantoraMockup' && (
+                    <div className="project-img-frame">
+                      <div style={{ background: '#ffffff', color: '#121316', padding: '24px 26px', height: '100%', minHeight: '270px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '14px', borderBottom: '1px solid #f1f5f9' }}>
+                          <div>
+                            <h4 style={{ fontSize: '1.02rem', fontWeight: 700, color: '#0f172a', margin: 0 }}>Impano Master Track 04</h4>
+                            <p style={{ fontSize: '0.76rem', color: '#64748b', margin: '3px 0 0 0' }}>48kHz • 24-Bit Lossless Stereo</p>
+                          </div>
+                          <button style={{ width: '38px', height: '38px', borderRadius: '50%', background: '#12101e', border: 'none', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', boxShadow: '0 4px 12px rgba(18,16,30,0.18)' }}>
+                            <Play size={15} fill="#ffffff" />
+                          </button>
+                        </div>
+
+                        {/* Clean Waveform Visualizer */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '3px', height: '54px', background: '#f8fafc', padding: '0 14px', borderRadius: '12px', border: '1px solid #e2e8f0', margin: '14px 0' }}>
+                          {[30, 45, 75, 90, 60, 40, 85, 100, 70, 50, 65, 80, 95, 40, 60, 85, 90, 70, 45, 30, 60, 80, 90, 65, 40, 55, 75, 90, 60, 45].map((h, i) => (
+                            <div 
+                              key={i} 
+                              style={{ 
+                                flex: 1, 
+                                height: `${h}%`, 
+                                background: i < 16 ? '#12101e' : '#cbd5e1', 
+                                borderRadius: '2px' 
+                              }}
+                            />
+                          ))}
+                        </div>
+
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.76rem', color: '#64748b', fontWeight: 500 }}>
+                          <span>02:14 / 04:38</span>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <Volume2 size={14} color="#64748b" />
+                            <span>Stereo Mastered</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </article>
+            </div>
+          ))}
         </div>
       </div>
     </section>
-  );
-}
-
-// Authentic Michelle Irby Project Card Layout
-function ProjectCardContent({ project, onSelectCaseStudy }) {
-  return (
-    <article className={`project-card ${project.themeClass}`}>
-      <div className="project-content">
-        
-        {/* Header row with Logo Badge and Deck Number */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginBottom: '22px' }}>
-          <div className="project-logo-badge" style={{ marginBottom: 0 }}>
-            <span className="project-logo-icon" style={{ background: project.iconBg }}>
-              {project.icon}
-            </span>
-            <span className="project-logo-text">{project.name}</span>
-          </div>
-          <span className="project-deck-badge">
-            BUNDLE {project.indexNum} / {project.totalNum}
-          </span>
-        </div>
-
-        <p className="project-category">{project.category}</p>
-        <h2 className="project-title">{project.title}</h2>
-        <p className="project-description">{project.description}</p>
-        
-        <div className="project-tags">
-          {project.tags.map(tag => (
-            <span key={tag} className="tech-tag">{tag}</span>
-          ))}
-        </div>
-
-        <div className="project-actions">
-          <button 
-            className="btn-card-primary" 
-            onClick={() => onSelectCaseStudy(project)}
-          >
-            Case study
-          </button>
-          <a 
-            href={project.link} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="btn-card-secondary"
-          >
-            <span>Live Demo</span>
-            <ArrowUpRight size={15} style={{ marginLeft: '4px' }} />
-          </a>
-        </div>
-      </div>
-
-      <div className="project-visual">
-        {project.visualType === 'image' && (
-          <div className="project-img-frame">
-            <img 
-              src={project.imageSrc} 
-              alt={project.imageAlt} 
-              loading="lazy" 
-            />
-          </div>
-        )}
-
-        {/* Mutekano Civic Safety Interactive Monitor Mockup */}
-        {project.visualType === 'mutekanoMockup' && (
-          <div className="css-mockup-browser">
-            <div className="mockup-header-bar">
-              <div className="mockup-dots">
-                <span></span><span></span><span></span>
-              </div>
-              <div className="mockup-address-bar">mutekano.gov.rw/command-center</div>
-            </div>
-            <div className="mockup-content-body" style={{ background: '#201815', color: '#f4f0f1', padding: '24px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Radio size={16} color="#4ade80" className="pulse-indicator" />
-                  <span style={{ fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.05em', color: '#4ade80' }}>
-                    KIGALI SECTOR RADAR • ACTIVE
-                  </span>
-                </div>
-                <span style={{ fontSize: '0.78rem', background: 'rgba(255,255,255,0.1)', padding: '2px 8px', borderRadius: '6px' }}>
-                  256-bit AES
-                </span>
-              </div>
-              
-              <div style={{ background: '#2c221e', borderRadius: '14px', padding: '16px', marginBottom: '14px', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.8rem', color: '#ded4d2' }}>
-                  <span>District Coverage</span>
-                  <span style={{ color: '#4ade80', fontWeight: 600 }}>99.8% Nominal</span>
-                </div>
-                <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.1)', borderRadius: '3px', overflow: 'hidden' }}>
-                  <div style={{ width: '92%', height: '100%', background: '#4ade80', borderRadius: '3px' }}></div>
-                </div>
-              </div>
-
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                <div style={{ background: '#2c221e', borderRadius: '12px', padding: '12px', border: '1px solid rgba(255,255,255,0.06)' }}>
-                  <div style={{ fontSize: '0.72rem', color: '#a89d9a', textTransform: 'uppercase' }}>Rapid SOS Response</div>
-                  <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#f4f0f1', marginTop: '4px' }}>2.4 min</div>
-                </div>
-                <div style={{ background: '#2c221e', borderRadius: '12px', padding: '12px', border: '1px solid rgba(255,255,255,0.06)' }}>
-                  <div style={{ fontSize: '0.72rem', color: '#a89d9a', textTransform: 'uppercase' }}>Verified Units</div>
-                  <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#f4f0f1', marginTop: '4px' }}>148 Active</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Cantora Digital Audio Workstation Mockup */}
-        {project.visualType === 'cantoraMockup' && (
-          <div className="css-mockup-browser">
-            <div className="mockup-header-bar">
-              <div className="mockup-dots">
-                <span></span><span></span><span></span>
-              </div>
-              <div className="mockup-address-bar">cantora.audio/studio/master-suite</div>
-            </div>
-            <div className="mockup-content-body" style={{ background: '#201815', color: '#f4f0f1', padding: '24px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '18px' }}>
-                <div>
-                  <h4 style={{ fontSize: '1.05rem', fontWeight: 600, color: '#f4f0f1' }}>Impano Master Track 04</h4>
-                  <p style={{ fontSize: '0.78rem', color: '#a89d9a' }}>48kHz • 24-Bit Lossless Stereo</p>
-                </div>
-                <button style={{ width: '38px', height: '38px', borderRadius: '50%', background: '#483831', border: '1px solid rgba(255,255,255,0.2)', color: '#f4f0f1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Play size={16} fill="#f4f0f1" />
-                </button>
-              </div>
-
-              {/* Dynamic Waveform Simulation */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '3px', height: '54px', marginBottom: '16px', background: '#2c221e', padding: '0 12px', borderRadius: '12px' }}>
-                {[30, 45, 75, 90, 60, 40, 85, 100, 70, 50, 65, 80, 95, 40, 60, 85, 90, 70, 45, 30, 60, 80, 90, 65, 40, 55, 75, 90, 60, 45].map((h, i) => (
-                  <div 
-                    key={i} 
-                    style={{ 
-                      flex: 1, 
-                      height: `${h}%`, 
-                      background: i < 16 ? '#f4f0f1' : 'rgba(244,240,241,0.3)', 
-                      borderRadius: '2px' 
-                    }}
-                  />
-                ))}
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.78rem', color: '#a89d9a' }}>
-                <span>02:14 / 04:38</span>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Volume2 size={14} />
-                  <span>Stereo Mastered</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-    </article>
   );
 }
