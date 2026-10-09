@@ -1763,15 +1763,89 @@ img {
   transform: translateY(-2px);
 }
 
+.btn-form-submit:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.spin-indicator {
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 .form-feedback-toast {
-  margin-top: 14px;
-  padding: 12px 18px;
-  background: #d1fae5;
+  margin-top: 18px;
+  padding: 16px 20px;
+  background: #ecfdf5;
   color: #065f46;
-  border-radius: 10px;
-  font-size: 0.9rem;
+  border: 1px solid #a7f3d0;
+  border-radius: 14px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.form-feedback-toast.fallback {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.feedback-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.96rem;
+  margin-bottom: 6px;
+  color: #065f46;
+}
+
+.feedback-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.btn-feedback-channel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: #ffffff;
+  color: #12101e;
+  border: 1px solid rgba(18, 19, 22, 0.15);
+  font-size: 0.84rem;
   font-weight: 600;
-  text-align: center;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.btn-feedback-channel:hover {
+  background: #12101e;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-feedback-channel.whatsapp {
+  background: #16a34a;
+  color: #ffffff;
+  border-color: #16a34a;
+}
+
+.btn-feedback-channel.whatsapp:hover {
+  background: #15803d;
+  color: #ffffff;
 }
 
 /* ==========================================================================
