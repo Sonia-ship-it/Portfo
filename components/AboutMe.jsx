@@ -26,11 +26,11 @@ export default function AboutMe() {
             {/* Stats */}
             <div className="about-stats-row">
               <div className="stat-item">
-                <h4>02+</h4>
-                <p>Years Mastery</p>
+                <h4>03+</h4>
+                <p>Years of Experience</p>
               </div>
               <div className="stat-item">
-                <h4>10+</h4>
+                <h4>15+</h4>
                 <p>Projects Shipped</p>
               </div>
               <div className="stat-item">
@@ -41,9 +41,10 @@ export default function AboutMe() {
 
             <div className="about-buttons">
               <a 
-                href="https://weisheit.vercel.app/CV.pdf" 
+                href="/assets/UWASE_SONIA_CV.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer" 
+                download="UWASE_SONIA_CV.pdf"
                 className="btn-primary-pill"
               >
                 Download Résumé (PDF) ↗
